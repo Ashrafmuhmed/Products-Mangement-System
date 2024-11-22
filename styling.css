@@ -1,0 +1,114 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(31, 31, 31);
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.crud{
+    width: 80%;
+    margin: auto;
+}
+
+.head{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 15px 0px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgb(19, 19, 19);
+    margin: 4px 0px ;
+    transition-duration: 5ms;
+    color: white;
+}
+
+input:focus{
+    background-color: black;
+}
+
+
+.price input{
+    width: 20%;
+}
+
+#total{
+    background-color: orangered;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+#total::before{
+    content: 'Total: ';
+}
+
+button{
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color:blueviolet;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+button:hover{
+    background-color: rgb(117, 36, 193);
+    letter-spacing: 2.5px;
+}
+
+.btnSearch{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnSearch button{
+    width: 48%;
+}
+
+th{
+    text-transform: uppercase;
+}
+
+th,td{
+    padding: 5px 0px;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+table #delete{
+    background-color: red;
+    width: fit-content;
+    padding: 8px 19px;
+    letter-spacing: 0px;
+}
+
+table #update{
+    background-color: green;
+    width: fit-content;
+    padding: 8px 19px;
+    letter-spacing: 0px;
+}
+
+
+
+
+

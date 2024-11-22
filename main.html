@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css">
+    <script src="script.js" async></script>
+    <title>CRUDS</title>
+</head>
+<body>
+    <div class="crud">
+        <div class="head">
+            <h2>product management system</h2>
+        </div>
+        <div class="inputs">
+            <input placeholder="title" type="text" id="title">
+            <div class="price">
+                <input placeholder="price" type="number" id="price">
+                <input placeholder="taxes" type="number" id="taxes">
+                <input placeholder="ads" type="number" id="ads">
+                <input placeholder="discount" type="number" id="disc">
+                <small id="total">321321</small>
+            </div>
+            <input type="number" id="count">
+            <input type="text" id="category">
+            <button id="submit">Add Product</button>
+
+        </div>
+        <div class="outputs">
+            <div class="searchBlock">
+                <input placeholder="search" type="text" id="search">
+                <div class="btnSearch">
+                    <button id="searchByCategory">Search by Category</button>
+                    <button id="searchByTitle">Search by TITLE</button>
+                </div>
+            </div>
+            <table id="productsTable">
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>taxes</th>
+                    <th>ads</th>
+                    <th>discount</th>
+                    <th>total</th>
+                    <th>category</th>
+                    <th>update</th>
+                    <th>delete</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>phone</td>
+                        <td>100</td>
+                        <td>15</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>115</td>
+                        <td>phone</td>
+                        <td><button id="update">update</button></td>
+                        <td><button id="delete">delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>phone</td>
+                        <td>100</td>
+                        <td>15</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>115</td>
+                        <td>phone</td>
+                        <td><button id="update">update</button></td>
+                        <td><button id="delete">delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>phone</td>
+                        <td>100</td>
+                        <td>15</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>115</td>
+                        <td>phone</td>
+                        <td><button id="update">update</button></td>
+                        <td><button id="delete">delete</button></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>
