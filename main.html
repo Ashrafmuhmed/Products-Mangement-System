@@ -15,13 +15,13 @@
         <div class="inputs">
             <input placeholder="title" type="text" id="title">
             <div class="price">
-                <input placeholder="price" type="number" id="price">
-                <input placeholder="taxes" type="number" id="taxes">
-                <input placeholder="ads" type="number" id="ads">
-                <input placeholder="discount" type="number" id="disc">
-                <small id="total">321321</small>
+                <input onkeyup="getTotal()" placeholder="price" type="number" id="price">
+                <input onkeyup="getTotal()" placeholder="taxes" type="number" id="taxes">
+                <input  onkeyup="getTotal()" placeholder="ads" type="number" id="ads">
+                <input onkeyup="getTotal()" placeholder="discount" type="number" id="disc">
+                <small onkeyup="getTotal()" id="total">0</small>
             </div>
-            <input type="number" id="count">
+            <input type="number" id="count" value="1">
             <input type="text" id="category">
             <button id="submit">Add Product</button>
 

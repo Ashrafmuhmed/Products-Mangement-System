@@ -43,9 +43,14 @@ input:focus{
     width: 20%;
 }
 
+.price{
+    height: fit-content;
+    justify-content: space-between;
+}
+
 #total{
     background-color: orangered;
-    padding: 2px;
+    padding: 12px;
     border-radius: 3px;
 }
 
@@ -107,6 +112,7 @@ table #update{
     padding: 8px 19px;
     letter-spacing: 0px;
 }
+
 
 
 
