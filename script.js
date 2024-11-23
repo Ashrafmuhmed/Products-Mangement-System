@@ -1,5 +1,6 @@
 let GEBID = (id) => document.getElementById(id);
 
+let titleSearchMode = true;
 let title = GEBID('title');
 let price = GEBID('price');
 let taxes = GEBID('taxes');
@@ -142,4 +143,34 @@ function updateProduct(id){
     submit.innerHTML = 'Update';
     getTotal();
     create = false;
+}
+
+
+function getSearchMode(flag)
+{
+    let searchField = document.getElementById('search');
+    titleSearchMode = flag === 'searchByTitle' ? true : false;
+    searchField.placeholder = titleSearchMode ?  'search by title' : 'search by category' ;
+    searchField.focus() ;
+    searchField.value = '' ;
+    showData();
+}
+
+function searchProduct(term){
+    document.getElementById('tbody').innerHTML = '' ;
+    for(let i  = 0 ; i < dataPro.length ; ++i) {
+    if(titleSearchMode){
+            if(dataPro[i].title.toLowerCase().includes(term.toLowerCase()))
+            {
+                document.getElementById('tbody').appendChild(productRow(dataPro[i]));
+            }
+    }
+    else{
+            if(dataPro[i].category.toLowerCase().includes(term.toLowerCase()))
+            {
+                document.getElementById('tbody').appendChild(productRow(dataPro[i]));
+            }
+        }
+        
+    }
 }
