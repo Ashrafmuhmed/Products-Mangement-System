@@ -63,6 +63,7 @@ button{
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
+    margin: 5px 0px;
     background-color:blueviolet;
     cursor: pointer;
     font-weight: bold;

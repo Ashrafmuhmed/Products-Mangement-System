@@ -7,6 +7,7 @@ let ads = GEBID('ads');
 let discount = GEBID('disc');
 let total = GEBID('total');
 let category = GEBID('category');
+let count = GEBID('count');
 let submit = GEBID('submit');
 
 
@@ -23,6 +24,12 @@ function getTotal() {
     
 };
 
+function clear() {
+    dataPro = [];
+    localStorage.product = JSON.stringify(dataPro);
+}
+
+
 let dataPro = localStorage.product == undefined ? [] : JSON.parse(localStorage.product);
 
 showData();
@@ -37,11 +44,13 @@ submit.onclick = () => {
         count: count.value,
         category: category.value
     }
-    dataPro.push(newPro);
+    for(let i = 1 ; i <= count.value ; i++){
+        dataPro.push(newPro);
+        dataPro[dataPro.length - 1].id = dataPro.length;
+    }
     localStorage.setItem('product', JSON.stringify(dataPro));
     console.log(dataPro);
-    dataPro[dataPro.length - 1].id = dataPro.length;
-    document.getElementById('tbody').appendChild(productRow(newPro));
+    showData();
     clearInputs();
 }
 
@@ -57,7 +66,21 @@ let clearInputs = () => {
 }
 
 function showData() {
-    document.getElementById('tbody').innerHTML = '';
+    if(dataPro.length > 0){
+        document.getElementById('clearBtn').innerHTML= '';
+        let btnDelete = document.createElement('button');
+        btnDelete.innerHTML = `Delete All Products (${dataPro.length}) `;
+        btnDelete.onclick = () => {
+            clear();
+            showData();
+        }
+        document.getElementById('clearBtn').appendChild(btnDelete);
+        document.getElementById('tbody').innerHTML = '';
+    }
+    else{
+        document.getElementById('clearBtn').innerHTML = '';
+        document.getElementById('tbody').innerHTML = '';
+    }
     for (i = 0; i < dataPro.length; i++) {
         dataPro[i].id = i + 1;
         document.getElementById('tbody').appendChild(productRow(dataPro[i]));
