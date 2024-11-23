@@ -9,6 +9,10 @@ let total = GEBID('total');
 let category = GEBID('category');
 let count = GEBID('count');
 let submit = GEBID('submit');
+let dataPro = localStorage.product == undefined ? [] : JSON.parse(localStorage.product);
+let create = true;
+let tmp;
+showData();
 
 
 function getTotal() {
@@ -30,7 +34,6 @@ function clear() {
 }
 
 
-let dataPro = localStorage.product == undefined ? [] : JSON.parse(localStorage.product);
 
 showData();
 submit.onclick = () => {
@@ -44,17 +47,29 @@ submit.onclick = () => {
         count: count.value,
         category: category.value
     }
-    for(let i = 1 ; i <= count.value ; i++){
-        dataPro.push(newPro);
-        dataPro[dataPro.length - 1].id = dataPro.length;
+
+    if(create){
+        for(let i = 1 ; i <= count.value ; i++){
+            dataPro.push(newPro);
+            dataPro[dataPro.length - 1].id = dataPro.length;
+        }
+        localStorage.setItem('product', JSON.stringify(dataPro));
+        console.log(dataPro);
     }
-    localStorage.setItem('product', JSON.stringify(dataPro));
-    console.log(dataPro);
+    else{
+        dataPro[tmp - 1] = newPro;
+        localStorage.setItem('product', JSON.stringify(dataPro));
+        create = true;
+        count.style.display = 'block';
+        submit.innerHTML = 'Add Product';
+    }
     showData();
     clearInputs();
+    getTotal();
 }
 
-let clearInputs = () => {
+
+function clearInputs(){
     title.value = '';
     price.value = '';
     taxes.value = '';
@@ -98,7 +113,7 @@ function productRow(product) {
     <td>${product.discount}</td>
     <td>${product.total}</td>
     <td>${product.category}</td>
-    <td><button id="update">update</button></td>
+    <td><button id="update" onclick="updateProduct(${product.id})">update</button></td>
     <td><button id="delete" onclick="deleteProduct(${product.id}); showData()">delete</button></td>
     `;
     return row ;
@@ -107,4 +122,24 @@ function productRow(product) {
 function deleteProduct(id){
     dataPro.splice(id-1 , 1);
     localStorage.product = JSON.stringify(dataPro);
+}
+
+function updateProduct(id){
+    window.scrollTo({
+        left:0,
+        top:0,
+        behavior:'smooth'
+    });
+    tmp = id;
+    console.log(id);
+    title.value = dataPro[id-1].title ;
+    price.value = dataPro[id-1].price ;
+    taxes.value = dataPro[id-1].taxes ;
+    ads.value = dataPro[id-1].ads ;
+    discount.value = dataPro[id-1].discount ;
+    category.value = dataPro[id-1].category ;
+    count.style.display = 'none';
+    submit.innerHTML = 'Update';
+    getTotal();
+    create = false;
 }
