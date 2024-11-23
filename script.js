@@ -16,6 +16,7 @@ let tmp;
 showData();
 
 
+
 function getTotal() {
     if (price.value != '') {
         let result = +price.value + +taxes.value + +ads.value - +discount.value;
@@ -36,7 +37,6 @@ function clear() {
 
 
 
-showData();
 submit.onclick = () => {
     let newPro = {
         title: title.value,
@@ -181,6 +181,9 @@ function searchProduct(term){
 }
 
 function validInput(){
-    if( title.value != '' && price != '' &&  count >= 500 && category != '') return true ;
+    if( title.value != '' 
+        && price != '' 
+        &&  count >= 500 
+        && category != '') return true ;
     return false ;
 }
