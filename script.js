@@ -19,7 +19,7 @@ showData();
 function getTotal() {
     if (price.value != '') {
         let result = +price.value + +taxes.value + +ads.value - +discount.value;
-        if (result <= 0) { window.alert('Unaccepted total price'); result += +discount.value; discount.value = ''; }
+        if (result <= 0) { window.alert('Unaccepted total price'); result += +discount.value; discount.value = ''; price.value = '' ; ads.value ='' ; taxes.value = '';}
         total.innerHTML = JSON.stringify(result);
         total.style.backgroundColor = 'green';
     } else {
@@ -48,8 +48,9 @@ submit.onclick = () => {
         count: count.value,
         category: category.value
     }
-
-    if(create){
+    if(validInput())
+    {
+        if(create){
         for(let i = 1 ; i <= count.value ; i++){
             dataPro.push(newPro);
             dataPro[dataPro.length - 1].id = dataPro.length;
@@ -63,6 +64,10 @@ submit.onclick = () => {
         create = true;
         count.style.display = 'block';
         submit.innerHTML = 'Add Product';
+    }
+    }
+    else{
+        window.alert('Invalid Inputs');
     }
     showData();
     clearInputs();
@@ -173,4 +178,9 @@ function searchProduct(term){
         }
         
     }
+}
+
+function validInput(){
+    if( title.value != '' && price != '' &&  count >= 500 && category != '') return true ;
+    return false ;
 }
